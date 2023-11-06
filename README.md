@@ -5,3 +5,5 @@ A shiny app to align and visualize nanopore sequences.
 ```bash
 docker run -p 3000:3000 hubentu/nanoporevis
 ```
+
+![screenshot](vis.png)
