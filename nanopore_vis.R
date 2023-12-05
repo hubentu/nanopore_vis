@@ -4,6 +4,7 @@ library(igvShiny)
 options(browser="google-chrome")
 options(shiny.port=3000)
 options(shiny.host="0.0.0.0")
+options(shiny.maxRequestSize = 100 * 1024^2)
 dir.create("tracks")
 addResourcePath("tracks", "tracks")
 
