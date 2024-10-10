@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN Rscript -e "install.packages('remotes')"
-RUN Rscript -e "remotes::install_github('gladkia/igvShiny')"
+RUN Rscript -e "install.packages(c('BiocManager', 'remotes'))"
+RUN Rscript -e "BiocManager::install('gladkia/igvShiny')"
 
 RUN addgroup --system app \
     && adduser --system --ingroup app app
@@ -24,5 +24,5 @@ COPY nanopore_vis.R .
 RUN chown app:app -R /home/app
 USER app
 
-EXPOSE 3838
+EXPOSE 3000
 CMD ["R", "-e", "shiny::runApp('/home/app/nanopore_vis.R')"]
